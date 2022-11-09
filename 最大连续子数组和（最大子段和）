@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<iostream>
+using namespace std;
+int find(int a[],int n);
+int main(void)
+{
+	int n;
+	int a[10]={0};
+	cin >> n ;
+	if( n <= 0 ) cout << "0";
+	else
+	{
+		for(int i=0;i<n;i++)
+			cin >> a[i];
+		cout << find(a,n);
+	}
+	system("pause");
+}
+
+int find(int a[],int n)
+{
+	int max=0,sum=0,negetive=1;
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]<=0)continue;
+		else
+		{
+			negetive = 0;
+			sum = 0;
+			for(int j=i;j<n;j++)
+			{
+				sum+=a[j];
+				if( max < sum ) max = sum;
+			}
+		}
+	}
+	if(negetive == 1) return 0;
+	else return max;
+}
+//-2 11 -4 13 -5 -2
